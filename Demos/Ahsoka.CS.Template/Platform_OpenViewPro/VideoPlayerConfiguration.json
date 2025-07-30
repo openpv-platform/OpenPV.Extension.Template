@@ -1,0 +1,34 @@
+{
+  "players": [
+    {
+      "videoPlayerID": 1,
+      "surfaceID": 1001,
+      "sourceID": 1,
+      "sourceName": "Video File",
+      "inputType": "File",
+      "brightness": 50,
+      "contrast": 50,
+      "saturation": 50
+    },
+    {
+      "videoPlayerID": 2,
+      "surfaceID": 1002,
+      "sourceID": 0,
+      "sourceName": "USB Input Camera",
+      "inputType": "Usb",
+      "brightness": 50,
+      "contrast": 50,
+      "saturation": 50
+    },
+    {
+      "videoPlayerID": 3,
+      "surfaceID": 1003,
+      "sourceID": 0,
+      "sourceName": "Serial Input Camera",
+      "inputType": "Csi",
+      "brightness": 75,
+      "contrast": 50,
+      "saturation": 50
+    }
+  ]
+}

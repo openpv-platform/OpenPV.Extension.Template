@@ -1,0 +1,3 @@
+[submodule "ThirdParty/OpenPV.Audio.AKM"]
+	path = ThirdParty/OpenPV.Audio.AKM
+	url = https://enovation.visualstudio.com/OpenPV/_git/OpenPV.Audio.AKM

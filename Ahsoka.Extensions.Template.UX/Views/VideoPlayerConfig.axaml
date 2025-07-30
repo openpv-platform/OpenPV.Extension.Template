@@ -1,0 +1,198 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="1030" d:DesignHeight="850"
+			 MinWidth="900"
+			 x:CompileBindings="False"
+			 xmlns:material="using:Material.Icons.Avalonia" 
+             x:Class="Ahsoka.Extensions.VideoPlayerConfig.UX.VideoPlayerConfig">
+
+	<UserControl.Styles>
+		<StyleInclude Source="avares://Ahsoka.DeveloperTools.Core/Styles/UserInputStyles.axaml" />
+		<Style Selector="DataGridCell.centered">
+			<Setter Property="HorizontalAlignment" Value="Stretch" />
+			<Setter Property="HorizontalContentAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="210"/>
+		</Grid.ColumnDefinitions>
+		<Border Grid.Column="1" Background="WhiteSmoke" BorderBrush="Gainsboro" BorderThickness="1,0,0,0">
+			<!-- Right side panel actions for adding and removing players -->
+			<StackPanel HorizontalAlignment="Center">
+				<TextBlock FontSize="18"
+				   VerticalAlignment="Top"
+				   HorizontalAlignment="Center"
+				   Margin="12"
+				   Foreground="DimGray"
+				   Text=" Actions "/>
+				<Button HorizontalAlignment="Stretch"
+					Height="38"
+					VerticalContentAlignment="Center"
+					Name="AddVideoPlayerButton"
+					Command="{Binding AddVideoPlayer}"
+					IsEnabled="{Binding !AdvancedConfigShown}" >
+					<StackPanel Orientation="Horizontal">
+						<material:MaterialIcon Width="24" Height="24" Foreground="SteelBlue" Kind="Add"></material:MaterialIcon>
+						<TextBlock VerticalAlignment="Center" FontSize="13"  Text="Add Video Player"/>
+					</StackPanel>
+				</Button>
+				<Button HorizontalAlignment="Stretch"
+					Height="38"
+					VerticalContentAlignment="Center"
+					Name="RemoveVideoPlayerButton"
+					Command="{Binding RemoveVideoPlayer}"
+					IsEnabled="{Binding !AdvancedConfigShown}">
+					<StackPanel Orientation="Horizontal">
+						<material:MaterialIcon Width="24" Height="24" Foreground="SteelBlue" Kind="Remove"></material:MaterialIcon>
+						<TextBlock VerticalAlignment="Center" FontSize="13"  Text="Remove Video Player"/>
+					</StackPanel>
+				</Button>
+				<Button HorizontalAlignment="Stretch"
+					Height="38"
+					VerticalContentAlignment="Center"
+					Name="ShowAdvancedOptionsButton"
+					Command="{Binding ShowAdvancedOptions}"
+					IsEnabled="{Binding !AdvancedConfigShown}"
+					ToolTip.Tip="Select a Video Player for advanced configuration">
+					<StackPanel Orientation="Horizontal">
+						<material:MaterialIcon Width="24" Height="24" Foreground="SteelBlue" Kind="Video"></material:MaterialIcon>
+						<TextBlock VerticalAlignment="Center" FontSize="13"  Text="Advanced Options"/>
+					</StackPanel>
+				</Button>
+			</StackPanel>
+		</Border>
+
+		<!-- Main editing dock for configuring video player properties -->
+		<DockPanel >
+			<Grid DockPanel.Dock="Top" Margin="25,25" RowDefinitions="auto,auto,auto" >
+				<TextBlock Text="Video Players" Margin="-10,15" FontSize="25" Foreground="SteelBlue" DockPanel.Dock="Top"/>
+				<Border Grid.Column="0" Grid.Row="1" Margin="10" Padding="3" BorderBrush="WhiteSmoke" BorderThickness="0,0,0,0">
+					<DataGrid BorderThickness="0" SelectionMode="Single" GridLinesVisibility="None"
+							ItemsSource="{Binding Players}" SelectedItem="{Binding SelectedVideoPlayer}" AutoGenerateColumns="False">
+						<DataGrid.Styles>
+							<!-- Centered text styling for data grid -->
+							<Style Selector="DataGridCell">
+								<Setter Property="HorizontalAlignment" Value="Center"/>
+							</Style>
+							
+						</DataGrid.Styles>
+						<DataGrid.Columns>
+							<DataGridTextColumn Width="Auto" Header="ID" IsReadOnly="True" Binding="{Binding VideoPlayerID}" />
+							<DataGridTemplateColumn Header="Input Type" Width="*">
+								<DataGridTemplateColumn.CellTemplate >
+									<DataTemplate >
+										<ComboBox Width="100" BorderThickness="0" HorizontalAlignment="Stretch" ItemsSource="{Binding SupportedTypes}" SelectedItem="{Binding VideoInputType}"  />
+									</DataTemplate>
+								</DataGridTemplateColumn.CellTemplate>
+							</DataGridTemplateColumn>
+							<DataGridTextColumn Width="2*" Header="Player Name" Binding="{Binding VideoSourceName}" />
+							<DataGridTextColumn Width="Auto" Header="Rendering Surface ID" Binding="{Binding VideoSurfaceID}" />
+						</DataGrid.Columns>
+					</DataGrid>
+				</Border>
+			</Grid>
+		</DockPanel>
+
+		<!-- Advanced properties editing dialogue -->
+		<Grid  IsVisible="{Binding AdvancedConfigShown, FallbackValue=true}"
+			Grid.ColumnSpan="3" Grid.RowSpan="10" Background="#33FFFFFF">
+			<Border Grid.Row="0" Grid.Column="2" BorderBrush="Gainsboro" BorderThickness="0"
+					VerticalAlignment="Stretch" Width="850" Height="400"
+					BoxShadow="5 5 10 2 DarkGray"
+					HorizontalAlignment="Stretch">
+				<Grid RowDefinitions="auto,*,auto"  ColumnDefinitions="*"  Background="White">
+					<TextBlock Text="Advanced Video Player Configuration"
+							   Margin="20,15" Grid.ColumnSpan="3"
+							   FontSize="25" Foreground="SteelBlue" DockPanel.Dock="Top"/>
+					<Border Grid.Column="0" Grid.Row="1" Margin="10" Padding="3" BorderBrush="WhiteSmoke" BorderThickness="0,0,0,0">
+						<DataGrid BorderThickness="0" Margin="0,10,0,0" SelectionMode="Single"
+							GridLinesVisibility="None"
+							ItemsSource="{Binding ConfigurablePlayer}" AutoGenerateColumns="False">
+							<DataGrid.Columns>
+								<!-- Left Column for Player Properties -->
+								<DataGridTemplateColumn Header="Player Configuration" Width="*">
+									<DataGridTemplateColumn.CellTemplate >
+										<DataTemplate >
+											<Grid RowDefinitions="Auto,Auto,Auto,Auto" Margin="25">
+												<!-- Player ID -->
+												<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,2">
+													<TextBlock Text="ID:" Width="80" VerticalAlignment="Center"/>
+													<TextBox Text="{Binding VideoPlayerID}" IsReadOnly="True" Width="200" Margin="5,0"/>
+												</StackPanel>
+
+												<!-- Player Name -->
+												<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,2">
+													<TextBlock Text="Name:" Width="80" VerticalAlignment="Center"/>
+													<TextBox Text="{Binding VideoSourceName}" Width="200" Margin="5,0"/>
+												</StackPanel>
+
+												<!-- Player Type -->
+												<StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,2">
+													<TextBlock Text="Input Type:" Width="80" VerticalAlignment="Center"/>
+													<ComboBox Width="100" ItemsSource="{Binding SupportedTypes}" SelectedItem="{Binding VideoInputType}"  />
+												</StackPanel>
+											</Grid>
+										</DataTemplate>
+									</DataGridTemplateColumn.CellTemplate>
+								</DataGridTemplateColumn>
+								<!-- Right Column for Advanced properties -->
+								<DataGridTemplateColumn Header="Advanced Settings" Width="*">
+									<DataGridTemplateColumn.CellTemplate>
+										<DataTemplate>
+											<Grid RowDefinitions="Auto,Auto,Auto,Auto" Margin="25">
+												<!-- Surface ID -->
+												<StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,2">
+													<TextBlock Text="Surface ID:" Width="80" VerticalAlignment="Center"/>
+													<TextBox Text="{Binding VideoSurfaceID}" IsReadOnly="True" Width="200" Margin="5,0"/>
+												</StackPanel>
+
+												<!-- Brightness -->
+												<StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0,2">
+													<TextBlock Text="Brightness:" Width="80" VerticalAlignment="Center"/>
+													<TextBox Text="{Binding VideoBrightness}" Width="200" Margin="5,0"/>
+												</StackPanel>
+
+												<!-- Contrast -->
+												<StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,2">
+													<TextBlock Text="Contrast:" Width="80" VerticalAlignment="Center"/>
+													<TextBox Text="{Binding VideoContrast}" Width="200" Margin="5,0"/>
+												</StackPanel>
+
+												<!-- Saturation -->
+												<StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,2">
+													<TextBlock Text="Saturation:" Width="80" VerticalAlignment="Center"/>
+													<TextBox Text="{Binding VideoSaturation}" Width="200" Margin="5,0"/>
+												</StackPanel>
+											</Grid>
+										</DataTemplate>
+									</DataGridTemplateColumn.CellTemplate>
+								</DataGridTemplateColumn>
+							</DataGrid.Columns>
+						</DataGrid>
+					</Border>
+					<Border Grid.ColumnSpan="3" Grid.Row="2">
+						<DockPanel  Margin="25,10,10,10"
+								   HorizontalAlignment="Right"
+								   VerticalAlignment="Center">
+							<Button DockPanel.Dock="Right"
+									Height="38"
+									VerticalContentAlignment="Center"
+									Command="{Binding CloseAdvancedOptionsConfig}">
+								<StackPanel Orientation="Horizontal">
+									<material:MaterialIcon Width="24" Height="24" Foreground="SteelBlue" Kind="Close"></material:MaterialIcon>
+									<TextBlock Margin="6,0" VerticalAlignment="Center" FontSize="13"
+											   Text="Close Editor"/>
+								</StackPanel>
+							</Button>
+						</DockPanel>
+					</Border>
+				</Grid>
+			</Border>
+		</Grid>
+	</Grid>
+</UserControl>

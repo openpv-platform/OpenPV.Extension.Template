@@ -1,0 +1,14 @@
+﻿<Project>
+	<PropertyGroup>
+		<!--Prevent Queries when running our code generator-->
+		<EnableSourceControlManagerQueries>false</EnableSourceControlManagerQueries>
+	</PropertyGroup>
+	
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(SolutionName)' != 'Ahsoka.Platform' and '$(RuntimeIdentifier)'=='linux-arm'">
+		<Exec ContinueOnError="true" Command="dotnet restore --runtime linux-arm" />
+	</Target>
+	
+	<ItemGroup Label="Development References" >
+		<ProjectReference Include="..\..\Ahsoka.Extensions.VideoPlayer\Ahsoka.Extensions.VideoPlayer.csproj" />
+	</ItemGroup>
+</Project>

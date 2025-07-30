@@ -1,0 +1,223 @@
+{
+  "version": "5.0.1.20039",
+  "packageName": "Ahsoka.CS.VideoDemo.Pro",
+  "packageDescription": "Basic Video Player Example",
+  "applicationVersion": "3.0",
+  "packageApplicationFolder": "../Platform_OpenViewPro/publish",
+  "packageOutputDirectory": "PackageOutput",
+  "licenses": [],
+  "optimizedServiceManager": false,
+  "customPackageInfo": {
+    "includeApplication": false,
+    "includeBootLogo": false,
+    "includeInstallerUI": false,
+    "includeFirmwareUpdate": false
+  },
+  "projectInfo": {
+    "applicationType": "Dotnet",
+    "execCommand": "Ahsoka.CS.VideoPlayer",
+    "projectPath": "../Ahsoka.CS.VideoPlayer.csproj",
+    "publishProfile": "../Properties/PublishProfiles/LinuxProfilePro.pubxml",
+    "projectType": "QT",
+    "optionalComponents": []
+  },
+  "serviceInfo": {
+    "runtimeConfiguration": {
+      "releaseOption": "NoAutoStart",
+      "extensionInfo": [
+        {
+          "extensionName": "Video Player Extension",
+          "configurationFile": "VideoPlayerConfiguration.json"
+        },
+        {
+          "extensionName": "Audio Manager Extension",
+          "configurationFile": "AudioManagerConfiguration.json"
+        }
+      ],
+      "startupDelay": 3,
+      "requireChallenge": "NotRequired",
+      "services": [
+        {
+          "serviceName": "SystemService",
+          "tcpListenAddress": "*",
+          "tcpConnectionAddress": "localhost",
+          "dataChannel": 5001,
+          "isExtension": false,
+          "behaviors": "AutoStart",
+          "startupOrder": 0,
+          "autoStartDelay": 0
+        },
+        {
+          "serviceName": "VideoService",
+          "tcpListenAddress": "localhost",
+          "tcpConnectionAddress": "localhost",
+          "dataChannel": 6202,
+          "isExtension": true,
+          "behaviors": "AutoStart",
+          "startupOrder": 0,
+          "autoStartDelay": 0
+        },
+        {
+          "serviceName": "AudioManager",
+          "tcpListenAddress": "localhost",
+          "tcpConnectionAddress": "localhost",
+          "dataChannel": 6302,
+          "isExtension": true,
+          "behaviors": "AutoStart",
+          "startupOrder": 0,
+          "autoStartDelay": 0
+        }
+      ]
+    },
+    "environmentValues": []
+  },
+  "screenConfiguration": {
+    "showUnknownSurfaces": true,
+    "bootLogoPath": "",
+    "orientation": 0,
+    "surfaceSetup": [
+      {
+        "surfaceId": 999,
+        "locationRectangle": {
+          "surfaceId": 999,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "sourceRectangle": {
+          "surfaceId": 999,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "visibility": {
+          "surfaceId": 0,
+          "isVisible": true,
+          "opacity": 1,
+          "commitChanges": false
+        },
+        "appID": "Ahsoka.StartLogo"
+      },
+      {
+        "surfaceId": 1000,
+        "locationRectangle": {
+          "surfaceId": 1000,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "sourceRectangle": {
+          "surfaceId": 1000,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "visibility": {
+          "surfaceId": 0,
+          "isVisible": true,
+          "opacity": 1,
+          "commitChanges": false
+        },
+        "appID": "Ahsoka.Installer"
+      },
+      {
+        "surfaceId": 1001,
+        "locationRectangle": {
+          "surfaceId": 1001,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "sourceRectangle": {
+          "surfaceId": 1001,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "visibility": {
+          "surfaceId": 0,
+          "isVisible": true,
+          "opacity": 1,
+          "commitChanges": false
+        },
+        "appID": "Video_File"
+      },
+      {
+        "surfaceId": 1002,
+        "locationRectangle": {
+          "surfaceId": 1002,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "sourceRectangle": {
+          "surfaceId": 1002,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "visibility": {
+          "surfaceId": 0,
+          "isVisible": true,
+          "opacity": 1,
+          "commitChanges": false
+        },
+        "appID": "USB_Camera"
+      },
+      {
+        "surfaceId": 1003,
+        "locationRectangle": {
+          "surfaceId": 1003,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "sourceRectangle": {
+          "surfaceId": 1003,
+          "x": 0,
+          "y": 0,
+          "width": 1024,
+          "height": 600,
+          "commitChanges": false
+        },
+        "visibility": {
+          "surfaceId": 0,
+          "isVisible": true,
+          "opacity": 1,
+          "commitChanges": false
+        },
+        "appID": "CSI_camera"
+      }
+    ]
+  },
+  "hardwareConfiguration": {
+    "hardwareItems": [],
+    "usbStartStatePrimary": "Default",
+    "usbStartStateSecondary": "Default"
+  },
+  "packageType": "opvEncrypted",
+  "packageStructureVersion": 1,
+  "platformFamily": "OpenViewLinuxPro",
+  "platformQualifier": "GenericArm64",
+  "securityMode": "None",
+  "applicationId": "00000000-0000-0000-0000-000000000000",
+  "components": []
+}

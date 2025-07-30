@@ -1,0 +1,40 @@
+{
+  "cardConfigurations": [
+    {
+      "cardId": -1,
+      "verbosity": -1,
+      "supportsTuner": false,
+      "supportsBluetoothAudio": false,
+      "supportsMediaApp": false,
+      "supportsVideoApp": true,
+      "supportsCustomApps": false,
+      "customAppCount": 0,
+      "supportsA2BOutput": false,
+      "supportsAnalogOutput": false,
+      "inputs": [
+        {
+          "id": 0,
+          "name": "Audio Prompt Input",
+          "portType": "AudioPromptInput",
+          "enabled": false,
+          "portGain": 0
+        },
+        {
+          "id": 1,
+          "name": "Video Application",
+          "portType": "VideoApplicationInput",
+          "enabled": false,
+          "portGain": 0
+        }
+      ],
+      "outputs": [],
+      "subwooferSetup": {
+        "cardId": 0,
+        "crossoverFrequency": 0,
+        "delay": 0
+      },
+      "index": 0,
+      "volume": 0
+    }
+  ]
+}

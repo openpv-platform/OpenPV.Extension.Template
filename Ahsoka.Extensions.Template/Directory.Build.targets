@@ -1,0 +1,15 @@
+﻿<Project TreatAsLocalProperty="IGNORE_PREREQS">
+
+	<Target Name="AddVideoPlayerExtensionInfo" BeforeTargets="PreBuildEvent">
+		<PropertyGroup>
+			<ExtensionFileInfo>$([System.IO.File]::ReadAllText('$(MSBuildProjectDirectory)/Ahsoka.Extensions.VideoPlayer.extensioninfo.json'))</ExtensionFileInfo>
+			<PackageDescription>
+				Video Player Extension for OpenPV 5.0
+
+$(ExtensionFileInfo)
+			</PackageDescription>
+		</PropertyGroup>
+
+	</Target>
+	
+</Project>

@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<Platforms>AnyCPU;x64</Platforms>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+
+	<Import Label="Ahsoka Local Build Properties" Condition="Exists('../Video.Build.props')" Project="../Video.Build.props" />
+
+	<ItemGroup Label="Reference to Ahsoka Nuget Packages" Condition="!Exists('../Video.Build.props')">
+		<PackageReference Include="Ahsoka.Extensions.VideoPlayer" Version="5.*-*" />
+	</ItemGroup>
+	
+</Project>
