@@ -17,13 +17,6 @@ ENDIF()
 
 IF (${AHSOKA_BUILD_OUTPUTS} MATCHES "OpenViewLinuxPro_TargetSupport/SDK$")
    add_subdirectory ("Ahsoka.VideoPlayer") 
-   add_subdirectory ("Ahsoka.AudioPlayer") 
-
-   add_subdirectory ("Ahsoka.AudioOutput")
-   add_subdirectory ("Ahsoka.AudioInput")
-   
-   add_subdirectory ("Ahsoka.Tuner")
-   add_subdirectory ("Ahsoka.A2B")
 ENDIF()
 
 

@@ -1,6 +1,6 @@
 ﻿using Ahsoka.Core;
 using Ahsoka.Core.Utility;
-using Ahsoka.Services.Audio;
+using Ahsoka.Services.Video;
 
 namespace Ahsoka;
 
@@ -15,7 +15,7 @@ class Program
         AssemblyResolver.Init();
 
         //force assembly load
-        var service = new AudioManagerService();
+        var service = new VideoService();
 
         CommandLine.Execute(args);
     }

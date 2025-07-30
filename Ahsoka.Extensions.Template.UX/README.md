@@ -1,5 +1,6 @@
-﻿# OpenPV - Ahsoka.Extensions.VideoPlayer.UX
+﻿# OpenPV - Ahsoka.Extensions.Template
 
-Ahsoka.Extensions.VideoPlayer.UX contains UX Extension for configuring the VideoPlayer service on OpenView Pro Hardware
+Ahsoka.Extensions.Template contains an example of working with OpenPV Extensions.
+&nbsp;
 
 **[For more information about developing in OpenPV Click Here.](https://support.enovationcontrols.com/hc/en-us)**

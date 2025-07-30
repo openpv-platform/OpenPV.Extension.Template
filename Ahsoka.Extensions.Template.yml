@@ -10,7 +10,7 @@ trigger:
     - develop
 
 variables:
-    solutionname: 'Ahsoka.Extensions.Media'
+    solutionname: 'Ahsoka.Extensions.Template'
     solutiondir:  $(Build.SourcesDirectory)
     solution: '*.sln'
     buildPlatform: 'Any CPU'
@@ -21,8 +21,8 @@ variables:
     isDevelop: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
   
 # This build has 2 Stages
-# Stage 2: Builds the Code and Run Tests
-# Stage 3: Uploads to Spark:
+# Stage 1: Builds the Code and Run Tests
+# Stage 2: Uploads to Nuget:
 stages:
    
 - stage: PCBuild
@@ -65,7 +65,7 @@ stages:
       displayName: Restore Platform
       inputs:
         command: 'restore'
-        restoreSolution: 'Ahsoka.Extensions.Media.sln'
+        restoreSolution: 'Ahsoka.Extensions.Template.sln'
         feedsToUse: 'config'
         externalFeedCredentials: 'Ahsoka.Nuget'
         noCache: true
@@ -73,7 +73,7 @@ stages:
     - task: VSBuild@1
       displayName: 'Build Solution'
       inputs:
-        solution: 'Ahsoka.Extensions.Media.sln'
+        solution: 'Ahsoka.Extensions.Template.sln'
         vsVersion: '17.0'
         platform: '$(buildPlatform)'
         configuration: '$(buildConfiguration)'
@@ -93,10 +93,8 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          # Write your PowerShell commands here.
-          dotnet pack Ahsoka.Extensions.VideoPlayer/Ahsoka.Extensions.VideoPlayer.csproj
-          dotnet pack Ahsoka.Extensions.AudioManager/Ahsoka.Extensions.AudioManager.csproj
-          dotnet pack Ahsoka.Extensions.AudioManager.UX/Ahsoka.Extensions.AudioManager.UX.csproj
+          # Write your PowerShell commands here. - Currently Packing is done with <GeneratePackageOnBuild>
+          # dotnet pack Ahsoka.Extensions.VideoPlayer/Ahsoka.Extensions.VideoPlayer.csproj
      
     - task: CopyFiles@2
       displayName: 'Moving Nugets to Upload Area'

@@ -22,11 +22,6 @@
 
 	<Target Name="BuildInteropLibs" AfterTargets="PostBuildEvent" Condition="$(IGNORE_PREREQS) !='YES' and !Exists('$(InteropSource_Root)\BuildOutputs\Ahsoka.Services\Ahsoka.Services.OpenViewLinux.so')">
 
-		<Message Text="Generate Proto Files" Importance="high" />
-		<MakeDir Directories="$(InteropSource_Root)\Ahsoka.Interop\Ahsoka.Proto" />
-		<Exec ContinueOnError="false" WorkingDirectory="$(InteropSource_Root)" Command="dotnet build -p:IGNORE_PREREQS=YES  $(InteropSource_Root)\Ahsoka.CreateProto\Ahsoka.CreateProto.csproj " />
-		<Exec ContinueOnError="true" WorkingDirectory="$(InteropSource_Root)" Command="dotnet run --no-build --project $(InteropSource_Root)\Ahsoka.CreateProto\Ahsoka.CreateProto.csproj --GenerateProto AudioManager $(InteropSource_Root)\Ahsoka.Interop\Ahsoka.Proto\AudioManager.proto" />
-	
 		<Message Text="Stopping Containers" Importance="high" />
 		<Exec ContinueOnError="true" IgnoreExitCode="true" WorkingDirectory="$(InteropSource_Root)" Command="podman kill Ahsoka.CoreBuilder 2> nul" />
 		<Exec ContinueOnError="true" IgnoreExitCode="true" WorkingDirectory="$(InteropSource_Root)" Command="podman kill Ahsoka.CoreBuilderPro 2> nul"/>

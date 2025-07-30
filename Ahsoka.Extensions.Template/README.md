@@ -1,8 +1,6 @@
-﻿# OpenPV - Ahsoka.Extensions.DataService
+﻿# OpenPV - Ahsoka.Extensions.Template
 
-Ahsoka.Extensions.DataService contains the Central Caching System
-that allows Services to Publish Keys to a Central Service which
-can be queried and subscribed by clients and other services.
+Ahsoka.Extensions.Template contains an example of working with OpenPV Extensions.
 &nbsp;
 
 **[For more information about developing in OpenPV Click Here.](https://support.enovationcontrols.com/hc/en-us)**

@@ -16,4 +16,3 @@ out/*
 
 *.ninja
 BuildOutput/*
-.platform_support/ServiceFramework/ServiceConfiguration.hpp

@@ -9,6 +9,6 @@
 	</Target>
 	
 	<ItemGroup Label="Development References" >
-		<ProjectReference Include="..\..\Ahsoka.Extensions.VideoPlayer\Ahsoka.Extensions.VideoPlayer.csproj" />
+		<ProjectReference Include="..\..\Ahsoka.Extensions.Template\Ahsoka.Extensions.Template.csproj" />
 	</ItemGroup>
 </Project>

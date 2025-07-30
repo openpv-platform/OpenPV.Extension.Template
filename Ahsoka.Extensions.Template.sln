@@ -5,11 +5,11 @@ VisualStudioVersion = 17.10.35004.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DEB5BF4C-549C-445E-B1D6-DE3CB5210141}"
 	ProjectSection(SolutionItems) = preProject
-		Ahsoka.Extensions.Media.yml = Ahsoka.Extensions.Media.yml
-		Demos\Audio.Build.props = Demos\Audio.Build.props
+		Ahsoka.Extensions.Template.yml = Ahsoka.Extensions.Template.yml
 		Directory.Build.props = Directory.Build.props
 		GitVersion.yml = GitVersion.yml
 		global.json = global.json
+		README.md = README.md
 		Demos\Video.Build.props = Demos\Video.Build.props
 	EndProjectSection
 EndProject

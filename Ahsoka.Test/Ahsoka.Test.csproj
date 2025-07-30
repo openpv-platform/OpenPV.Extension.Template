@@ -14,7 +14,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Ahsoka.Extensions.VideoPlayer\Ahsoka.Extensions.VideoPlayer.csproj" />
+		<ProjectReference Include="..\Ahsoka.Extensions.Template\Ahsoka.Extensions.Template.csproj" />
 		
 		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="9.0.0" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
